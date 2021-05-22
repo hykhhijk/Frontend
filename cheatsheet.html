@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>        <!--{{ ~ }}안을 view로 보면 됨-->
+        <button v-on:click="hello">CHK'</button>        <!--methods hello 내부 import방법 -->
+        <input type="number" v-model="price">       
+        <h4>example: {{ mathexam }}</h4>        <!--computed: 내부변수 mathexam 매핑-->
+        <input v-model="searchCity" type="text" />
+        <ul>
+             <li v-for="city in filteredcity">{{ city }}</li>           <!--65P예제참조 검색창에 적ㅇ요해볼것-->
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',                  //mount될 html element를 나타냄     ex) -> id = app에 적용
+            data:{                      //Model view를 변화->view는 어디?
+                message: "Have a nice day!",
+                price:10000,
+                searchCity:'',
+                city: ["Seoul","Suwon","Busan","Sinchang"]
+            },
+            methods:{
+                hello: function(){
+                    alert(this.message);            //this means vm
+                }
+            },  
+            computed:{                              //data조작(연산등)을 위해 사용
+                mathexam: function(){
+                    return (this.price * 1.1);},
+                filteredcity: function(){
+                    return this.city.filter(item => item.match(this.searchCity.toUpperCase()))          //한번더 CHK!!
+                }
+            }
+        })
+    </script>
+</body>
+</html>
