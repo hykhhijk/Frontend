@@ -16,19 +16,10 @@
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button @click="posttest" class="w-100 btn btn-lg btn-primary" type="button">Sign in</button>       <!--type = "button" or "submit"를 번갈아가면 송신값 test-->
+ 
+    <button @click="post" class="w-100 btn btn-lg btn-primary" type="button">회원가입</button>       <!--type = "button" or "submit"를 번갈아가면 송신값 test-->
 
-    <button @click="test" class="w-10 btn btn-sm btn-secondary" type="button">Test</button>       
-    <!-- <p> {{ testtext }} </p> -->
-    <p>{{ testtext.data? testtext.data[0].id:'' }}</p>
-    <p>{{ testtext.data? testtext.data[0].email:'' }}</p>
 
-    <!-- <p>{{ testtext.data[1].email }}</p> -->
 
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
 
@@ -49,7 +40,6 @@ export default {
     name:'',
     id:'',
     password:'',
-    testtext:'',
   }),
   methods:{
 test(){
@@ -57,7 +47,7 @@ test(){
 axios.get('https://reqres.in/api/users?page=2')
   .then(response => {   //respone대신 resm err 가능
     // handle success
-    console.log(response);
+    console.log(response);        
     this.testtext = response.data; 
   })
   .catch(error => {
@@ -69,8 +59,9 @@ axios.get('https://reqres.in/api/users?page=2')
     console.log("test");
   });
 },
-posttest(){
-  axios.post('https://reqres.in/api/register', {
+post(){
+  axios.post('/users/new-user', {
+    name: this.name,
     email: this.id,
     password: this.password
 })

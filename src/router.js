@@ -5,6 +5,7 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import Main from "./views/Main";
 import Recycle from "./views/Recycle";
+import Community from "./views/Community";
 
 
 
@@ -18,8 +19,8 @@ const router = new VueRouter({
         {path:"/users/login",component: Login},
         {path:"/users/new-user",component: Register},
         {path:"/",component: Main},
-        {path:"/recycle",component: Recycle},
-        
+        {path:"/users/recycle",component: Recycle},
+        {path:"/community",component: Community},
 
 
     ]
